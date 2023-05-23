@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on varchar(255)</title>
+    <link>http://evanlh.com/posts/</link>
+    <description>Recent content in Posts on varchar(255)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 26 Jan 2022 00:00:00 -0500</lastBuildDate><atom:link href="http://evanlh.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Teleporting thru Information Space</title>
+      <link>http://evanlh.com/posts/personal_information_environment/</link>
+      <pubDate>Wed, 26 Jan 2022 00:00:00 -0500</pubDate>
+      
+      <guid>http://evanlh.com/posts/personal_information_environment/</guid>
+      <description>I&amp;rsquo;m really excited by the research effort proposed in Towards a Dynamic Multiscale Personal Information Space, a 2020 paper advocating more &amp;lsquo;convivial&amp;rsquo;1 information spaces. As the authors describe it, when a user interacts with the computer:
+ The system offers a novel interface to her digital information, consolidating her data (e.g., email, messages, calendars, web pages, notes, sketches, and analyses and visualizations) across applications. When she interacts with the information in her workspace, it seems to be alive, aware of when and how it was last used, and sometimes even why she was using it.</description>
+    </item>
+    
+    <item>
+      <title>Metaphors We Learn to Program By</title>
+      <link>http://evanlh.com/posts/metaphors/</link>
+      <pubDate>Mon, 29 Nov 2021 00:00:00 -0500</pubDate>
+      
+      <guid>http://evanlh.com/posts/metaphors/</guid>
+      <description>I&amp;rsquo;m working through Metaphors We Live By, an exploration of the role of metaphor in human cognition and language. The central theme of the book is:
+ [..] human thought processes are largely metaphorical. [..] Metaphors as linguistic expressions are possible precisely because there are metaphors in a person’s conceptual system.
+ They provide examples of conceptual metaphors which ground our experience&amp;ndash; ARGUMENT IS WAR, HAPPY IS UP, THEORIES ARE BUILDINGS&amp;ndash; and examples from everyday language to support the theory.</description>
+    </item>
+    
+    <item>
+      <title>The Gospel of Evan: a not true dao of development</title>
+      <link>http://evanlh.com/posts/gospel_of_evan/</link>
+      <pubDate>Thu, 18 Nov 2021 00:00:00 -0500</pubDate>
+      
+      <guid>http://evanlh.com/posts/gospel_of_evan/</guid>
+      <description>These are a few meditations&amp;ndash; parables, precepts&amp;ndash; I&amp;rsquo;m collecting&amp;ndash; snipping, stealing&amp;ndash; to capture the vague &amp;amp; provisional learnings I&amp;rsquo;ve had working in the software industry. It&amp;rsquo;s a &amp;ldquo;gospel&amp;rdquo; because, well, everyone is either preaching or selling you snake-oil&amp;ndash; lean into it, write your own gospel, what&amp;rsquo;s the worst that could happen?
+  Have a mission.
+  Respect &amp;amp; learn from your ancestors.
+  Aim for utmost minimalism at your public interface.</description>
+    </item>
+    
+    <item>
+      <title>A short-list of short, grokkable, &amp; influential CS papers</title>
+      <link>http://evanlh.com/posts/foundations/</link>
+      <pubDate>Sun, 19 Sep 2021 00:00:00 -0400</pubDate>
+      
+      <guid>http://evanlh.com/posts/foundations/</guid>
+      <description>This post is a running list of research papers I&amp;rsquo;m collecting for self-study with the following qualities:
+ They include source code [S] or (at minimum) pseudo-code [P] of the core insight of the system / design / algorithm. They do not overwhelm the reader with mathematical notation. The majority are, by my highly subjective account, &amp;ldquo;foundational&amp;rdquo; papers, in that they have had some important influence on their respective subdisciplines. Most are less than 30 pages  Languages &amp;amp; Runtimes The Smalltalk-76 Programming System Design and Implementation, Ingals [S] Describes the Smalltalk system of communicating objects, and includes an example of the Smalltalk-76 interpreter written in itself in the appendix.</description>
+    </item>
+    
+    <item>
+      <title>Overcoming boredom in a Software Engineering career</title>
+      <link>http://evanlh.com/posts/overcoming_engineering_boredom/</link>
+      <pubDate>Thu, 05 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://evanlh.com/posts/overcoming_engineering_boredom/</guid>
+      <description>At many times in my career, I&amp;rsquo;ve struggled with an overwhelming sense of boredom1 that affects my day-to-day ability to do my job. How can this happen given what an infinitely deep subject computing is? I find it usually derives from the following causes:
+Causes of Boredom  The sense the work you&amp;rsquo;re doing isn&amp;rsquo;t societally relevant, that you&amp;rsquo;re merely a cog in a giant military/capitalist water-works The work you&amp;rsquo;re asked to do is tedious and unchallenging, merely a repetition of the same things you&amp;rsquo;ve done many times before The work you&amp;rsquo;re doing is challenging, but the challenge is beyond your skill level and you don&amp;rsquo;t have mentors who can point you in the right direction  Potential solutions Of the above causes, I think the least tractable is the moral/ethical one, and has led me to the greatest dissatisfaction, including at times trying alternate career paths.</description>
+    </item>
+    
+    <item>
+      <title>Bootcamper Question #1: Hash efficiency</title>
+      <link>http://evanlh.com/posts/hash_efficiency/</link>
+      <pubDate>Sun, 28 Feb 2021 00:00:00 -0500</pubDate>
+      
+      <guid>http://evanlh.com/posts/hash_efficiency/</guid>
+      <description>A friend forwarding me this question from a friend working thru a Bootcamp programming. It seemed like a great opportunity to write a post, and I would welcome similar questions:
+Question &amp;ldquo;Can you clarify how classes (and really hashes) can more efficiently use keys when the initialization definition is established?&amp;quot;
+Response This a great question and a fairly deep topic to be diving into if you&amp;rsquo;re early in your coursework. Which will make it extra fun to try answering!</description>
+    </item>
+    
+    <item>
+      <title>About Me</title>
+      <link>http://evanlh.com/posts/about/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 -0500</pubDate>
+      
+      <guid>http://evanlh.com/posts/about/</guid>
+      <description>The views expressed here are my own and not those of my employer.
+This is my professional online presence, so I won&amp;rsquo;t share much outside of my engineering work, but in my free time I like to play my guitar &amp;amp; Octatrack, travel, cook, read, and generally enjoy being an aerobic organism hurtling thru space on this beautiful rock.
+My focus  I am forever learning to write elegant &amp;amp; performant systems with a minimum amount of incidental complexity.</description>
+    </item>
+    
+  </channel>
+</rss>
