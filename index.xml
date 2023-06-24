@@ -6,7 +6,16 @@
     <description>Recent content on varchar(255)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 05 Jun 2023 00:00:00 +0200</lastBuildDate><atom:link href="https://evanlh.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 24 Jun 2023 00:00:00 +0200</lastBuildDate><atom:link href="https://evanlh.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Code the Shortest Path First</title>
+      <link>https://evanlh.com/posts/shortest_path_first_sdlc/</link>
+      <pubDate>Sat, 24 Jun 2023 00:00:00 +0200</pubDate>
+      
+      <guid>https://evanlh.com/posts/shortest_path_first_sdlc/</guid>
+      <description>There is a strange thing that I noticed as I progressed from a junior engineer to mid-career to senior. When you&amp;rsquo;re a new engineer, still learning the basics, you are given a task or you have an idea, and you proceed to implement exactly that idea. Very simple, point A to point B, whatever gets the job done. You hate your code later but you got it to work. Then you learn some stuff&amp;ndash; you learn about object-oriented design &amp;amp; algorithms &amp;amp; design patterns &amp;amp; frameworks &amp;amp; abstractions &amp;amp; higher-order functions &amp;amp; monoids &amp;amp; whatever else you found on Hacker News.</description>
+    </item>
+    
     <item>
       <title>Never Prescribe Understanding: Pre-WWDC AR/DynamicLand Thoughts</title>
       <link>https://evanlh.com/posts/never_prescribe_understanding/</link>

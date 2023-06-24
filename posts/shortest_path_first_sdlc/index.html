@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> Code the Shortest Path First | varchar(255)</title>
+  <link rel = 'canonical' href = 'https://evanlh.com/posts/shortest_path_first_sdlc/'>
+  <meta name="description" content="Hi, I&#39;m Evan. I&#39;ve been learning to code for about as long as I can remember. I sure do have a lot left to learn tho. Sharing here some of that journey.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="Code the Shortest Path First" />
+<meta property="og:description" content="There is a strange thing that I noticed as I progressed from a junior engineer to mid-career to senior. When you&rsquo;re a new engineer, still learning the basics, you are given a task or you have an idea, and you proceed to implement exactly that idea. Very simple, point A to point B, whatever gets the job done. You hate your code later but you got it to work. Then you learn some stuff&ndash; you learn about object-oriented design &amp; algorithms &amp; design patterns &amp; frameworks &amp; abstractions &amp; higher-order functions &amp; monoids &amp; whatever else you found on Hacker News." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://evanlh.com/posts/shortest_path_first_sdlc/" /><meta property="og:image" content="https://evanlh.com/images/octopus-1200x800.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-06-24T00:00:00+02:00" />
+<meta property="article:modified_time" content="2023-06-24T00:00:00+02:00" />
+
+
+  <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://evanlh.com/images/octopus-1200x800.png"/>
+
+<meta name="twitter:title" content="Code the Shortest Path First"/>
+<meta name="twitter:description" content="There is a strange thing that I noticed as I progressed from a junior engineer to mid-career to senior. When you&rsquo;re a new engineer, still learning the basics, you are given a task or you have an idea, and you proceed to implement exactly that idea. Very simple, point A to point B, whatever gets the job done. You hate your code later but you got it to work. Then you learn some stuff&ndash; you learn about object-oriented design &amp; algorithms &amp; design patterns &amp; frameworks &amp; abstractions &amp; higher-order functions &amp; monoids &amp; whatever else you found on Hacker News."/>
+
+  
+  
+    
+  
+  
+  <link rel="stylesheet" href="https://evanlh.com/css/styles.65de21a55c4b3a38580338f7de9460ec576dc7dcf8c3c5454d53c074571fc4cc0243fa3f782bd5fe70bc5b3672b3852ed702eb0b4a39acbb1b5868880f8317b0.css" integrity="sha512-Zd4hpVxLOjhYAzj33pRg7Fdtx9z4w8VFTVPAdFcfxMwCQ/o/eCvV/nC8WzZys4Uu1wLrC0o5rLsbWGiID4MXsA=="> 
+
+  
+   <link rel="stylesheet" href="https://evanlh.com/css/custom.css"> 
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="https://evanlh.com/images/favicon.ico" />
+
+  
+  
+  
+  
+  
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-24869722-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;" aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">All posts</a></li>
+         
+        <li><a href="/posts/about/">About</a></li>
+         
+        <li><a href="/index.xml">RSS</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" https://evanlh.com/posts/never_prescribe_understanding/" aria-label="Previous">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#" aria-label="Share">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fevanlh.com%2fposts%2fshortest_path_first_sdlc%2f" aria-label="Facebook">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fevanlh.com%2fposts%2fshortest_path_first_sdlc%2f&text=Code%20the%20Shortest%20Path%20First" aria-label="Twitter">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fevanlh.com%2fposts%2fshortest_path_first_sdlc%2f&title=Code%20the%20Shortest%20Path%20First" aria-label="Linkedin">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fevanlh.com%2fposts%2fshortest_path_first_sdlc%2f&is_video=false&description=Code%20the%20Shortest%20Path%20First" aria-label="Pinterest">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Code%20the%20Shortest%20Path%20First&body=Check out this article: https%3a%2f%2fevanlh.com%2fposts%2fshortest_path_first_sdlc%2f" aria-label="Email">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fevanlh.com%2fposts%2fshortest_path_first_sdlc%2f&title=Code%20the%20Shortest%20Path%20First" aria-label="Pocket">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fevanlh.com%2fposts%2fshortest_path_first_sdlc%2f&title=Code%20the%20Shortest%20Path%20First" aria-label="reddit">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fevanlh.com%2fposts%2fshortest_path_first_sdlc%2f&name=Code%20the%20Shortest%20Path%20First&description=There%20is%20a%20strange%20thing%20that%20I%20noticed%20as%20I%20progressed%20from%20a%20junior%20engineer%20to%20mid-career%20to%20senior.%20When%20you%26rsquo%3bre%20a%20new%20engineer%2c%20still%20learning%20the%20basics%2c%20you%20are%20given%20a%20task%20or%20you%20have%20an%20idea%2c%20and%20you%20proceed%20to%20implement%20exactly%20that%20idea.%20Very%20simple%2c%20point%20A%20to%20point%20B%2c%20whatever%20gets%20the%20job%20done.%20You%20hate%20your%20code%20later%20but%20you%20got%20it%20to%20work.%20Then%20you%20learn%20some%20stuff%26ndash%3b%20you%20learn%20about%20object-oriented%20design%20%26amp%3b%20algorithms%20%26amp%3b%20design%20patterns%20%26amp%3b%20frameworks%20%26amp%3b%20abstractions%20%26amp%3b%20higher-order%20functions%20%26amp%3b%20monoids%20%26amp%3b%20whatever%20else%20you%20found%20on%20Hacker%20News." aria-label="Tumblr">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fevanlh.com%2fposts%2fshortest_path_first_sdlc%2f&t=Code%20the%20Shortest%20Path%20First" aria-label="Hacker News">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <nav id="TableOfContents"></nav>
+    </div>
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        Code the Shortest Path First
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2023-06-24 00:00:00 &#43;0200 &#43;0200" itemprop="datePublished">2023-06-24</time>
+          
+        </div>
+        
+        
+        
+        
+      </div>
+    </header>
+
+  
+    <div class="content" itemprop="articleBody">
+      <p>There is a strange thing that I noticed as I progressed from a junior engineer to mid-career to senior. When you&rsquo;re a new engineer, still learning the basics, you are given a task or you have an idea, and you proceed to implement exactly that idea. Very simple, point A to point B, whatever gets the job done. You hate your code later but you <em>got it to work</em>. Then you learn some stuff&ndash; you learn about object-oriented design &amp; algorithms &amp; design patterns &amp; frameworks &amp; abstractions &amp; higher-order functions &amp; monoids &amp; whatever else you found on Hacker News. And you&rsquo;ll start new projects, and you&rsquo;ll think you should use some of those things, and you may notice that you don&rsquo;t finish things as quickly, or not at all. Someday you find yourself on a team of engineers &amp; it will seem like the whole team is getting less done than you got done on your own as a beginner who didn&rsquo;t know anything.</p>
+<p>The thing that gets lost at this stage as that, with a new task of any complexity, you still just need to code the shortest path from point A to point B. At this point it can help to <em>explicitly ignore</em> thinking about the best abstraction to use or The Right Way of Doing Things! That can come later. If it&rsquo;s a true greenfield project you are &ldquo;prototyping&rdquo;, if it&rsquo;s part of an existing project you are making a &ldquo;<a href="https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/">tracer bullet</a>&rdquo;. The concept is the same&ndash; do the minimum work to get from point A to point B. Point A is the current state of the code, point B is code that fulfills the feature requirements. It might be <em>ugly</em> code, but if it <em>fulfills the requirements</em> you have succeeded. <strong>Do not</strong> <a href="https://grugbrain.dev/#grug-on-factring-your-code">factor your code too early</a>!</p>
+<p>This may seem obvious but it can get lost, especially when working on sizeable team&ndash; there is always someone suggesting to pause and spend days setting up a CI/CD pipeline, or use a cool new library they just found, or refactor some module so it&rsquo;s more DRY/decoupled. These people are not strictly wrong, but they&rsquo;re not completely right. Do the requirements dictate any of those things? Have you solved the hardest part of the task at hand? If not, don&rsquo;t do that other crap.</p>
+<p>The reason you should do things in this order, is that you might refactor the module or setup the CI environment, and then learn that your whole approach to the problem was wrong. You have to throw it out &amp; start over &amp; potentially a lot of those other things you did are now a waste of time. This is why work needs to be done <a href="https://evanlh.com/posts/never%5Fprescribe%5Funderstanding/">holistically</a> at the start&ndash; the pressure to keep people occupied &amp; parallelize work will cause you to <em>prematurely divide the problem along arbitrary boundaries</em>. The proper abstractions that best delineate roles do not necessarily emerge on the first try, it&rsquo;s better to be able to sculpt them into place over repeated encounters with the problem space. This is why you want to be on a <a href="https://twitter.com/evanlh/status/1671437706092503041">small team</a> that takes ownership of their entire piece of the problem space&ndash; the same people need to have repeated encounters with the problem space in order for the right patterns to emerge.</p>
+<p>Now this can lead to a problem: You have a crap piece of code on a feature branch that accomplishes exactly the minimum set of requirements at hand. Maybe you demoed it to Product. Can you ship it? No. <em>Now</em> you have to allocate time to refactor the ugly parts, write tests, etc. This will sculpt your sketchy prototype/tracer bullet into something shippable. This can be tricky to negotiate when interfacing with product management, the right approach depends on the relationship. Make your PM aware of the undiscovered parts of the problem, explain exactly what you&rsquo;re trying to discover, or hide the task in some kind of opaque &ldquo;prototyping&rdquo; bucket. You can&rsquo;t allow a product team with tight deadlines to kill or forever sweep under the rug essential aspects of SDLC&ndash; if it&rsquo;s software that&rsquo;s going to ship, it needs tests, it needs CI/CD, &amp; you might need to refactor a few things so the code makes sense to future you. It probably shouldn&rsquo;t land on <code>main</code> without those things, but you shouldn&rsquo;t be doing all of your development as tho it <em>has</em> to land on <code>main</code>.</p>
+<p>Like everything else, this is a judgement call. It&rsquo;s possible nothing about the problem at-hand is that complicated, you already know what the most logical division of labor is, so the boundaries you draw are not arbitrary. In that case you can parallelize, you can work <a href="https://evanlh.com/posts/never%5Fprescribe%5Funderstanding/">prescriptively</a>. But anytime you&rsquo;re attempting a problem that is new, unexplored, if the probability of failure is greater than 20% or so, code the shortest path first.</p>
+
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/posts">All posts</a></li>
+         
+          <li><a href="/posts/about/">About</a></li>
+         
+          <li><a href="/index.xml">RSS</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents"></nav>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fevanlh.com%2fposts%2fshortest_path_first_sdlc%2f" aria-label="Facebook">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fevanlh.com%2fposts%2fshortest_path_first_sdlc%2f&text=Code%20the%20Shortest%20Path%20First" aria-label="Twitter">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fevanlh.com%2fposts%2fshortest_path_first_sdlc%2f&title=Code%20the%20Shortest%20Path%20First" aria-label="Linkedin">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fevanlh.com%2fposts%2fshortest_path_first_sdlc%2f&is_video=false&description=Code%20the%20Shortest%20Path%20First" aria-label="Pinterest">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Code%20the%20Shortest%20Path%20First&body=Check out this article: https%3a%2f%2fevanlh.com%2fposts%2fshortest_path_first_sdlc%2f" aria-label="Email">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fevanlh.com%2fposts%2fshortest_path_first_sdlc%2f&title=Code%20the%20Shortest%20Path%20First" aria-label="Pocket">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fevanlh.com%2fposts%2fshortest_path_first_sdlc%2f&title=Code%20the%20Shortest%20Path%20First" aria-label="reddit">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fevanlh.com%2fposts%2fshortest_path_first_sdlc%2f&name=Code%20the%20Shortest%20Path%20First&description=There%20is%20a%20strange%20thing%20that%20I%20noticed%20as%20I%20progressed%20from%20a%20junior%20engineer%20to%20mid-career%20to%20senior.%20When%20you%26rsquo%3bre%20a%20new%20engineer%2c%20still%20learning%20the%20basics%2c%20you%20are%20given%20a%20task%20or%20you%20have%20an%20idea%2c%20and%20you%20proceed%20to%20implement%20exactly%20that%20idea.%20Very%20simple%2c%20point%20A%20to%20point%20B%2c%20whatever%20gets%20the%20job%20done.%20You%20hate%20your%20code%20later%20but%20you%20got%20it%20to%20work.%20Then%20you%20learn%20some%20stuff%26ndash%3b%20you%20learn%20about%20object-oriented%20design%20%26amp%3b%20algorithms%20%26amp%3b%20design%20patterns%20%26amp%3b%20frameworks%20%26amp%3b%20abstractions%20%26amp%3b%20higher-order%20functions%20%26amp%3b%20monoids%20%26amp%3b%20whatever%20else%20you%20found%20on%20Hacker%20News." aria-label="Tumblr">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fevanlh.com%2fposts%2fshortest_path_first_sdlc%2f&t=Code%20the%20Shortest%20Path%20First" aria-label="Hacker News">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu-toggle" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;" aria-label="Menu">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc-toggle" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;" aria-label="TOC">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share-toggle" class="icon" href="#" onclick="$('#share-footer').toggle();return false;" aria-label="Share">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2023  varchar(255) 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">All posts</a></li>
+         
+        <li><a href="/posts/about/">About</a></li>
+         
+        <li><a href="/index.xml">RSS</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+<script src=/js/code-copy.js></script>
+
+
+
+</html>
